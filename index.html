@@ -260,6 +260,49 @@
 
           <div class="pill">Point fort : chaîne complète (architecture → VHDL → post-synthèse → post-routage)</div>
         </div>
+
+        <div class="card">
+          <strong>SCADA / Automatisme — Modbus TCP + HOME I/O + Supervision</strong>
+          <div class="meta">
+            Mise en place d’une chaîne industrielle complète : commande PLC, simulation de partie opérative,
+            supervision SCADA et analyse réseau des échanges Modbus TCP.
+          </div>
+
+          <h3>Architecture & objectifs</h3>
+          <ul>
+            <li>Contrôle d’équipements simulés (volets roulants) via programme PLC</li>
+            <li>Interfaçage PLC ↔ simulateur HOME I/O via passerelle I/O</li>
+            <li>Supervision SCADA : visualisation temps réel sur tableau de bord</li>
+            <li>Validation protocole : capture et analyse Modbus TCP sous Wireshark</li>
+          </ul>
+
+          <h3>Contributions techniques</h3>
+          <ul>
+            <li>Configuration réseau Ethernet : adressage IP, masques, tests de connectivité (ping)</li>
+            <li>Mapping I/O : correspondance entrées/sorties et zones mémoire (%I, %Q, %M, %MW)</li>
+            <li>Programmation Ladder : logique montée/descente avec exclusion mutuelle (sécurité)</li>
+            <li>Configuration SCADA : création équipement Modbus, trames de lecture/écriture, variables & synoptiques</li>
+          </ul>
+
+          <h3>Résultats & validation</h3>
+          <ul>
+            <li>Voyants SCADA cohérents avec les sorties PLC (réaction temps réel)</li>
+            <li>Analyse Modbus TCP : requêtes/réponses conformes, MBAP, fonctions de lecture/écriture</li>
+            <li>Mesure de performances : latence inter-trame stable (ordre de grandeur ~ dizaines de ms)</li>
+          </ul>
+
+          <div class="taglist">
+            <span class="tag">Automatisme</span>
+            <span class="tag">Ladder</span>
+            <span class="tag">Modbus TCP</span>
+            <span class="tag">SCADA / IHM</span>
+            <span class="tag">Mapping I/O</span>
+            <span class="tag">Wireshark</span>
+          </div>
+
+          <div class="pill">Point fort : intégration bout-en-bout (PLC → supervision → validation réseau)</div>
+        </div>
+
       </section>
 
       <!-- COLONNE DROITE -->
@@ -287,6 +330,11 @@
               <span class="tag">FPGA</span><span class="tag">ZYNQ</span><span class="tag">ASIC</span><span class="tag">Synthèse logique</span>
               <span class="tag">PWM</span><span class="tag">UART</span><span class="tag">AXI</span><span class="tag">ADC</span>
               <span class="tag">Capteurs (optiques/IR/encodeurs)</span>
+            </div>
+
+            <h3>Indus / Réseaux</h3>
+            <div class="taglist">
+              <span class="tag">Modbus TCP</span><span class="tag">I/O Mapping</span><span class="tag">PLC</span><span class="tag">SCADA</span>
             </div>
 
             <h3>Tests & Validation</h3>
