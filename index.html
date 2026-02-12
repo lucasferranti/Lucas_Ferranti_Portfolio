@@ -58,6 +58,7 @@
         <span class="chip">C</span>
         <span class="chip">VHDL</span>
         <span class="chip">FPGA / ZYNQ</span>
+        <span class="chip">DSP /Modélisation</span>
         <span class="chip">Tests & Validation</span>
         <span class="chip">Linux / Git</span>
       </div>
@@ -223,7 +224,7 @@
         </div>
 
         <div class="card">
-          <strong>Conception de circuit numérique — Filtre passe-bas (TP)</strong>
+          <strong>Conception de circuit numérique — Filtre passe-bas</strong>
           <div class="meta">
             Conception et validation d’un filtre passe-bas numérique : architecture à additionneur, multiplieur et retard z⁻¹,
             avec étude, simulation, synthèse et étapes de placement/routage. :contentReference[oaicite:1]{index=1}
@@ -232,25 +233,25 @@
           <h3>Architecture & théorie</h3>
           <ul>
             <li>Déduction de la relation en Z et de l’architecture du filtre passe-bas (addition + multiplication + z⁻¹). :contentReference[oaicite:2]{index=2}</li>
-            <li>Spécification d’un coefficient de filtrage (ex : cm = 0,75 via 3092/4096). :contentReference[oaicite:3]{index=3}</li>
+            <li>Spécification d’un coefficient de filtrage (ex : cm = 0,75 via 3092/4096).</li>
           </ul>
 
           <h3>Conception des blocs</h3>
           <ul>
-            <li>Conception d’un additionneur n bits (propagation de retenue) à partir d’additionneurs 1 bit. :contentReference[oaicite:4]{index=4}</li>
-            <li>Intégration filtre : registre d’entrée (bascules D), additionneur, multiplieur, retard z⁻¹. :contentReference[oaicite:5]{index=5}</li>
+            <li>Conception d’un additionneur n bits (propagation de retenue) à partir d’additionneurs 1 bit.</li>
+            <li>Intégration filtre : registre d’entrée (bascules D), additionneur, multiplieur, retard z⁻¹.</li>
           </ul>
 
           <h3>VHDL, simulation & validation</h3>
           <ul>
-            <li>Description VHDL modulaire : registre (reg_E), additionneur avec registre (add_reg), multiplieur (multi), top filtre. :contentReference[oaicite:6]{index=6}</li>
-            <li>Simulation comportementale + post-synthèse + post-routage (prise en compte délais). :contentReference[oaicite:7]{index=7}</li>
-            <li>Analyse des chronogrammes (mode analogique) : réponse progressive typique d’un passe-bas. :contentReference[oaicite:8]{index=8}</li>
+            <li>Description VHDL modulaire : registre (reg_E), additionneur avec registre (add_reg), multiplieur (multi), top filtre.</li>
+            <li>Simulation comportementale + post-synthèse + post-routage (prise en compte délais).</li>
+            <li>Analyse des chronogrammes (mode analogique) : réponse progressive typique d’un passe-bas.</li>
           </ul>
 
           <h3>Implémentation physique</h3>
           <ul>
-            <li>Placement/routage avec Innovus : floorplan, alimentation (rings/rails), arbre d’horloge, fillers, export netlist/délais. :contentReference[oaicite:9]{index=9}</li>
+            <li>Placement/routage avec Innovus : floorplan, alimentation (rings/rails), arbre d’horloge, fillers, export netlist/délais.</li>
           </ul>
 
           <div class="taglist">
