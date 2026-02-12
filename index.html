@@ -79,81 +79,146 @@
         <h2>Projets universitaires</h2>
 
         <div class="card">
-          <strong>Projet M2 — Injection de fautes sur CNN LeNet-5 quantifié INT8</strong>
-          <div class="meta">Objectif : mesurer l’impact de bit-flips sur un réseau (MNIST) via campagnes massives d’injection de fautes.</div>
-          <ul>
-            <li>Développé un framework d’injection de fautes en <b>C</b> (instrumentation via macro <i>INLINE_BITFLIP</i>)</li>
-            <li>Automatisé les campagnes via scripts <b>Python</b> et génération de résultats <b>CSV</b></li>
-            <li>Exécuté > <b>3 millions</b> d’inférences en environnement C instrumenté</li>
-            <li>Analysé statistiquement les erreurs par couche / bit / direction (MSB plus sensibles, couches C1 & C3 vulnérables)</li>
-          </ul>
-          <div class="taglist">
-            <span class="tag">C</span><span class="tag">Python</span><span class="tag">TensorFlow / TFLite</span>
-            <span class="tag">INT8</span><span class="tag">MNIST</span><span class="tag">Fault Injection</span>
+          <strong>Projet M2 — Tolérance aux fautes d’un CNN quantifié INT8 (LeNet-5)</strong>
+          <div class="meta">
+            Étude approfondie de la robustesse d’un réseau convolutionnel embarqué face aux inversions de bits
+            dans un contexte critique (systèmes embarqués sensibles aux radiations / défauts mémoire).
           </div>
-          <div class="line">
-            <span>Livrables : code + analyse + résultats</span>
-            <span><a href="#" target="_blank" rel="noreferrer">Lien (repo / rapport)</a></span>
+        
+          <h3>Contexte & Objectif</h3>
+          <ul>
+            <li>Analyse de la résilience d’un CNN LeNet-5 quantifié INT8 (dataset MNIST)</li>
+            <li>Simulation de défauts matériels via injection logicielle de bit-flips</li>
+            <li>Identifier les couches et paramètres les plus vulnérables</li>
+          </ul>
+        
+          <h3>Réalisations techniques</h3>
+          <ul>
+            <li>Développement d’un framework d’injection en <b>C</b> avec macro INLINE_BITFLIP</li>
+            <li>Instrumentation ciblée : poids, biais, activations intermédiaires</li>
+            <li>Automatisation complète des campagnes via <b>Python</b></li>
+            <li>Exécution de <b>+3 millions d’inférences</b></li>
+            <li>Analyse statistique par couche, bit et direction d’inversion</li>
+          </ul>
+        
+          <h3>Résultats clés</h3>
+          <ul>
+            <li>Sensibilité élevée des bits de poids fort (MSB)</li>
+            <li>Couches C1 et C3 identifiées comme les plus vulnérables</li>
+            <li>Biais plus critiques que les poids</li>
+          </ul>
+        
+          <div class="taglist">
+            <span class="tag">C</span>
+            <span class="tag">Python</span>
+            <span class="tag">TensorFlow Lite</span>
+            <span class="tag">INT8</span>
+            <span class="tag">Analyse statistique</span>
+            <span class="tag">Systèmes critiques</span>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <strong>Projet Robotique — Système embarqué FPGA (ZYNQ7)</strong>
+          <div class="meta">
+            Conception complète d’un système temps réel intégrant asservissement moteur,
+            acquisition capteurs et logique décisionnelle embarquée.
+          </div>
+        
+          <h3>Architecture développée</h3>
+          <ul>
+            <li>Générateur PWM (125 MHz → 20 kHz)</li>
+            <li>Machine à états VHDL pour trajectoire autonome</li>
+            <li>Mesure vitesse via encodeur incrémental (détection fronts + compteur matériel)</li>
+            <li>Gestion interruptions matérielles via processeur ZYNQ7</li>
+          </ul>
+        
+          <h3>Fonctionnalités intégrées</h3>
+          <ul>
+            <li>Suivi de ligne par capteurs optiques</li>
+            <li>Détection obstacle IR + ADC</li>
+            <li>Transmission UART (ASCII)</li>
+            <li>Détection couleur par photodiodes</li>
+          </ul>
+        
+          <h3>Validation</h3>
+          <ul>
+            <li>Simulation temporelle complète</li>
+            <li>Validation sur robot réel</li>
+            <li>Tests fonctionnels multi-scénarios</li>
+          </ul>
+        
+          <div class="taglist">
+            <span class="tag">VHDL</span>
+            <span class="tag">FPGA</span>
+            <span class="tag">ZYNQ7</span>
+            <span class="tag">PWM</span>
+            <span class="tag">UART</span>
+            <span class="tag">Interruptions</span>
+            <span class="tag">Temps réel</span>
           </div>
         </div>
 
         <div class="card">
-          <strong>Projet Robotique — Contrôle de trajectoire & asservissement sur FPGA (ZYNQ7)</strong>
-          <div class="meta">Objectif : système de contrôle temps réel intégrant PWM, mesure vitesse, obstacles, suivi de ligne, UART.</div>
-          <ul>
-            <li>Développé un générateur <b>PWM</b> (125 MHz → 20 kHz) et une <b>FSM VHDL</b> (trajectoire carrée)</li>
-            <li>Validé le design via simulations temporelles (chronogrammes, transitions d’états)</li>
-            <li>Mesuré la vitesse via encodeur incrémental (détection fronts + compteur matériel)</li>
-            <li>Transmis les données via <b>UART</b> (ASCII) et géré capteurs/interruptions via <b>AXI GPIO</b></li>
-            <li>Ajouté détection obstacle (IR + ADC) et logique d’évitement, validation sur robot réel</li>
-          </ul>
-          <div class="taglist">
-            <span class="tag">VHDL</span><span class="tag">FPGA</span><span class="tag">ZYNQ7</span>
-            <span class="tag">PWM</span><span class="tag">UART</span><span class="tag">AXI GPIO</span><span class="tag">ADC</span>
+          <strong>Conception VHDL & Synthèse ASIC — FSM robot autonome</strong>
+          <div class="meta">
+            Développement et synthèse ASIC d’un contrôleur basé sur FSM avec analyse
+            des performances selon différents codages d’états.
           </div>
-          <div class="line">
-            <span>Livrables : VHDL + tests + démo</span>
-            <span><a href="#" target="_blank" rel="noreferrer">Lien (repo / rapport)</a></span>
+        
+          <h3>Conception</h3>
+          <ul>
+            <li>FSM synchrone à 9 états (Machine de Mealy)</li>
+            <li>Reset asynchrone + synchronisation front montant</li>
+            <li>Testbenchs complets avec analyse de couverture</li>
+          </ul>
+        
+          <h3>Synthèse & Optimisation</h3>
+          <ul>
+            <li>Comparaison codages : One-Hot / Gray / Binaire</li>
+            <li>Fréquence max : <b>794,8 MHz</b> (One-Hot)</li>
+            <li>Chemin critique : 1,26 ns</li>
+            <li>Analyse surface logique & timing</li>
+          </ul>
+        
+          <div class="taglist">
+            <span class="tag">VHDL</span>
+            <span class="tag">FSM</span>
+            <span class="tag">Synthèse ASIC</span>
+            <span class="tag">Cadence Leonardo</span>
+            <span class="tag">Analyse timing</span>
           </div>
         </div>
 
         <div class="card">
-          <strong>Conception VHDL & Synthèse ASIC — FSM + comparaison codages d’états</strong>
-          <div class="meta">Objectif : modéliser une FSM (Mealy), couvrir par testbench, synthétiser ASIC et comparer One-Hot / Gray / Binaire.</div>
+          <strong>Modélisation DSP — Suréchantillonneur FPGA (×8)</strong>
+          <div class="meta">
+            Modélisation cycle-près en Python d’une architecture VHDL
+            pour accélérer la validation système.
+          </div>
+        
+          <h3>Architecture étudiée</h3>
           <ul>
-            <li>Conçu une FSM synchrone <b>9 états</b> (reset asynchrone, front montant)</li>
-            <li>Développé des <b>testbenchs</b> et amélioré la couverture fonctionnelle (états/transitions)</li>
-            <li>Synthétisé en technologie ASIC et comparé surfaces / chemins critiques selon codage</li>
-            <li>Mis en évidence une fréquence max élevée en <b>One-Hot</b> (chemin critique réduit)</li>
-            <li>Développé un compteur VHDL paramétrable et validé avant/après synthèse</li>
+            <li>Pipeline ×3 avec filtres FIR half-band ordre 14</li>
+            <li>Suréchantillonnage ×8 (250 MSPS → 2 GSPS)</li>
+            <li>Architecture multi-voies (10 instances parallèles)</li>
           </ul>
-          <div class="taglist">
-            <span class="tag">VHDL</span><span class="tag">FSM (Mealy)</span><span class="tag">Testbench</span>
-            <span class="tag">Couverture</span><span class="tag">Synthèse ASIC</span>
-          </div>
-          <div class="line">
-            <span>Livrables : VHDL + rapports de synthèse</span>
-            <span><a href="#" target="_blank" rel="noreferrer">Lien (repo / rapport)</a></span>
-          </div>
-        </div>
-
-        <div class="card">
-          <strong>Modélisation numérique — Suréchantillonneur (cycle-près) en Python</strong>
-          <div class="meta">Objectif : accélérer la validation d’une architecture existante (pipeline ×3, FIR half-band) via modélisation Python.</div>
+        
+          <h3>Travaux réalisés</h3>
           <ul>
-            <li>Analysé une architecture VHDL existante (pipeline ×3, filtres FIR half-band ordre 14)</li>
-            <li>Développé une modélisation <b>cycle-près</b> en Python orientée objet (3 étages)</li>
-            <li>Simulé un suréchantillonnage ×8 (250 MSPS → 2 GSPS) : latences, init, production parallèle</li>
-            <li>Ajouté génération/traitement de signaux (I/Q) et décalage fréquentiel (coeffs pré-calculés)</li>
-            <li>Validé via FFT : gain, images spectrales, comparaison réponse théorique</li>
+            <li>Modélisation orientée objet des étages</li>
+            <li>Implémentation FFT & analyse spectrale</li>
+            <li>Validation gain & images spectrales</li>
           </ul>
+        
           <div class="taglist">
-            <span class="tag">Python (POO)</span><span class="tag">NumPy</span><span class="tag">SciPy</span>
-            <span class="tag">FFT</span><span class="tag">DSP</span><span class="tag">I/Q</span>
-          </div>
-          <div class="line">
-            <span>Livrables : simulateur + validations</span>
-            <span><a href="#" target="_blank" rel="noreferrer">Lien (repo / rapport)</a></span>
+            <span class="tag">Python</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">SciPy</span>
+            <span class="tag">DSP</span>
+            <span class="tag">FFT</span>
+            <span class="tag">Architecture FPGA</span>
           </div>
         </div>
 
