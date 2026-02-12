@@ -24,10 +24,11 @@
     @media (max-width: 880px){ .grid{ grid-template-columns: 1fr; } }
     section { background: rgba(18,26,51,.75); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 18px; }
     h2 { margin: 0 0 10px; font-size: 18px; }
+    h3 { margin: 10px 0 6px; font-size: 15px; }
     .card { border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04); border-radius: 14px; padding: 14px; margin: 12px 0; }
     .meta { color: var(--muted); font-size: 14px; }
     ul { margin: 10px 0 0 18px; }
-    .k { display:grid; gap: 8px; }
+    .k { display:grid; gap: 12px; }
     .line { display:flex; justify-content: space-between; gap: 10px; border-top: 1px dashed rgba(255,255,255,.12); padding-top: 10px; margin-top: 10px; color: var(--muted); font-size: 13px; }
     .warn { color: #ffd37a; font-size: 13px; }
     .small { color: var(--muted); font-size: 13px; }
@@ -37,6 +38,10 @@
       background: rgba(122,162,255,.14); border: 1px solid rgba(122,162,255,.35);
       font-size: 14px;
     }
+    .twoCol { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media (max-width: 520px){ .twoCol{ grid-template-columns: 1fr; } }
+    .taglist { display:flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { font-size: 12px; color: var(--muted); border: 1px solid rgba(255,255,255,.12); padding: 4px 8px; border-radius: 999px; background: rgba(255,255,255,.03); }
   </style>
 </head>
 
@@ -45,80 +50,169 @@
     <header>
       <h1>Lucas Ferranti</h1>
       <div class="subtitle">
-        Ingénieur Électronique Numérique & Systèmes Embarqués — Projets universitaires & références (accès via QR code).
+        Ingénieur Développement Logiciel / Systèmes Embarqués — Projets universitaires & références (accès via QR code).
       </div>
+
       <div class="chips">
-        <span class="chip">VHDL / FPGA</span>
         <span class="chip">Python</span>
-        <span class="chip">C embarqué</span>
+        <span class="chip">C</span>
+        <span class="chip">VHDL</span>
+        <span class="chip">FPGA / ZYNQ</span>
+        <span class="chip">Tests & Validation</span>
         <span class="chip">Linux / Git</span>
-        <span class="chip">Cadence / Vivado</span>
       </div>
 
       <div class="btnrow">
         <a class="btn" href="mailto:lucas.ferranti.fr@gmail.com">Email</a>
         <a class="btn" href="https://www.linkedin.com/in/lucas-ferranti" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="btn" href="https://github.com/lucasferranti" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://github.com/TON-USERNAME" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+
+      <div class="small">
+        Cette page regroupe un aperçu structuré de mes projets (académiques) et de mes compétences techniques.
       </div>
     </header>
 
     <div class="grid">
+      <!-- COLONNE GAUCHE -->
       <section>
         <h2>Projets universitaires</h2>
 
         <div class="card">
-          <strong>Robotique — FPGA + contrôle de trajectoire</strong>
-          <div class="meta">Objectif : concevoir des circuits sur FPGA et piloter un robot en temps réel.</div>
+          <strong>Projet M2 — Injection de fautes sur CNN LeNet-5 quantifié INT8</strong>
+          <div class="meta">Objectif : mesurer l’impact de bit-flips sur un réseau (MNIST) via campagnes massives d’injection de fautes.</div>
           <ul>
-            <li>Description des circuits sur FPGA en <b>VHDL</b></li>
-            <li>Développement du contrôle de trajectoire en <b>C</b> (PSoC)</li>
-            <li>Validation fonctionnelle et mise au point</li>
+            <li>Développé un framework d’injection de fautes en <b>C</b> (instrumentation via macro <i>INLINE_BITFLIP</i>)</li>
+            <li>Automatisé les campagnes via scripts <b>Python</b> et génération de résultats <b>CSV</b></li>
+            <li>Exécuté > <b>3 millions</b> d’inférences en environnement C instrumenté</li>
+            <li>Analysé statistiquement les erreurs par couche / bit / direction (MSB plus sensibles, couches C1 & C3 vulnérables)</li>
           </ul>
+          <div class="taglist">
+            <span class="tag">C</span><span class="tag">Python</span><span class="tag">TensorFlow / TFLite</span>
+            <span class="tag">INT8</span><span class="tag">MNIST</span><span class="tag">Fault Injection</span>
+          </div>
           <div class="line">
-            <span>Tech : VHDL • FPGA • C • Vivado</span>
-            <span><a href="#" target="_blank" rel="noreferrer">Lien (code / rapport)</a></span>
+            <span>Livrables : code + analyse + résultats</span>
+            <span><a href="#" target="_blank" rel="noreferrer">Lien (repo / rapport)</a></span>
           </div>
         </div>
 
         <div class="card">
-          <strong>TIMA — Tolérance aux fautes sur réseau de neurones (LeNet)</strong>
-          <div class="meta">Objectif : analyser l’impact de fautes sur une implémentation matérielle / embarquée.</div>
+          <strong>Projet Robotique — Contrôle de trajectoire & asservissement sur FPGA (ZYNQ7)</strong>
+          <div class="meta">Objectif : système de contrôle temps réel intégrant PWM, mesure vitesse, obstacles, suivi de ligne, UART.</div>
           <ul>
-            <li>Implémentation & évaluation du modèle <b>LeNet</b></li>
-            <li>Analyse de robustesse (tolérance aux fautes)</li>
+            <li>Développé un générateur <b>PWM</b> (125 MHz → 20 kHz) et une <b>FSM VHDL</b> (trajectoire carrée)</li>
+            <li>Validé le design via simulations temporelles (chronogrammes, transitions d’états)</li>
+            <li>Mesuré la vitesse via encodeur incrémental (détection fronts + compteur matériel)</li>
+            <li>Transmis les données via <b>UART</b> (ASCII) et géré capteurs/interruptions via <b>AXI GPIO</b></li>
+            <li>Ajouté détection obstacle (IR + ADC) et logique d’évitement, validation sur robot réel</li>
           </ul>
+          <div class="taglist">
+            <span class="tag">VHDL</span><span class="tag">FPGA</span><span class="tag">ZYNQ7</span>
+            <span class="tag">PWM</span><span class="tag">UART</span><span class="tag">AXI GPIO</span><span class="tag">ADC</span>
+          </div>
           <div class="line">
-            <span>Tech : Python • NN • Évaluation</span>
-            <span><a href="#" target="_blank" rel="noreferrer">Lien (résultats)</a></span>
+            <span>Livrables : VHDL + tests + démo</span>
+            <span><a href="#" target="_blank" rel="noreferrer">Lien (repo / rapport)</a></span>
           </div>
         </div>
 
         <div class="card">
-          <strong>CNRS — Simulateur cycle-près de sur-échantillonnage</strong>
-          <div class="meta">Objectif : modéliser une architecture et analyser les performances.</div>
+          <strong>Conception VHDL & Synthèse ASIC — FSM + comparaison codages d’états</strong>
+          <div class="meta">Objectif : modéliser une FSM (Mealy), couvrir par testbench, synthétiser ASIC et comparer One-Hot / Gray / Binaire.</div>
           <ul>
-            <li>Modélisation de l’architecture en <b>Python</b></li>
-            <li>Simulation cycle-près + analyse</li>
+            <li>Conçu une FSM synchrone <b>9 états</b> (reset asynchrone, front montant)</li>
+            <li>Développé des <b>testbenchs</b> et amélioré la couverture fonctionnelle (états/transitions)</li>
+            <li>Synthétisé en technologie ASIC et comparé surfaces / chemins critiques selon codage</li>
+            <li>Mis en évidence une fréquence max élevée en <b>One-Hot</b> (chemin critique réduit)</li>
+            <li>Développé un compteur VHDL paramétrable et validé avant/après synthèse</li>
           </ul>
+          <div class="taglist">
+            <span class="tag">VHDL</span><span class="tag">FSM (Mealy)</span><span class="tag">Testbench</span>
+            <span class="tag">Couverture</span><span class="tag">Synthèse ASIC</span>
+          </div>
           <div class="line">
-            <span>Tech : Python • DSP</span>
-            <span><a href="#" target="_blank" rel="noreferrer">Lien (rapport)</a></span>
+            <span>Livrables : VHDL + rapports de synthèse</span>
+            <span><a href="#" target="_blank" rel="noreferrer">Lien (repo / rapport)</a></span>
+          </div>
+        </div>
+
+        <div class="card">
+          <strong>Modélisation numérique — Suréchantillonneur (cycle-près) en Python</strong>
+          <div class="meta">Objectif : accélérer la validation d’une architecture existante (pipeline ×3, FIR half-band) via modélisation Python.</div>
+          <ul>
+            <li>Analysé une architecture VHDL existante (pipeline ×3, filtres FIR half-band ordre 14)</li>
+            <li>Développé une modélisation <b>cycle-près</b> en Python orientée objet (3 étages)</li>
+            <li>Simulé un suréchantillonnage ×8 (250 MSPS → 2 GSPS) : latences, init, production parallèle</li>
+            <li>Ajouté génération/traitement de signaux (I/Q) et décalage fréquentiel (coeffs pré-calculés)</li>
+            <li>Validé via FFT : gain, images spectrales, comparaison réponse théorique</li>
+          </ul>
+          <div class="taglist">
+            <span class="tag">Python (POO)</span><span class="tag">NumPy</span><span class="tag">SciPy</span>
+            <span class="tag">FFT</span><span class="tag">DSP</span><span class="tag">I/Q</span>
+          </div>
+          <div class="line">
+            <span>Livrables : simulateur + validations</span>
+            <span><a href="#" target="_blank" rel="noreferrer">Lien (repo / rapport)</a></span>
           </div>
         </div>
 
         <p class="small">
-          Astuce : si tu ne peux pas publier le code, mets un lien vers un PDF public (rapport anonymisé) ou des captures.
+          Note : certains livrables peuvent être partagés sous forme de rapport anonymisé si le code ne peut pas être publié.
         </p>
       </section>
 
+      <!-- COLONNE DROITE -->
       <section class="k">
+        <div>
+          <h2>Compétences</h2>
+
+          <div class="card">
+            <h3>Langages</h3>
+            <div class="taglist">
+              <span class="tag">Python</span><span class="tag">C</span><span class="tag">VHDL</span>
+              <span class="tag">Perl</span><span class="tag">Shell</span><span class="tag">Java</span>
+            </div>
+
+            <h3>Logiciels & Outils</h3>
+            <div class="taglist">
+              <span class="tag">TensorFlow</span><span class="tag">NumPy</span><span class="tag">SciPy</span>
+              <span class="tag">Git</span><span class="tag">Gerrit</span><span class="tag">Jenkins</span>
+              <span class="tag">Qt / PyQt</span><span class="tag">Vivado</span><span class="tag">Simulation VHDL</span>
+              <span class="tag">Cadence Leonardo</span>
+            </div>
+
+            <h3>Systèmes & Hardware</h3>
+            <div class="taglist">
+              <span class="tag">FPGA</span><span class="tag">ZYNQ</span><span class="tag">ASIC</span><span class="tag">Synthèse logique</span>
+              <span class="tag">PWM</span><span class="tag">UART</span><span class="tag">AXI</span><span class="tag">ADC</span>
+              <span class="tag">Capteurs (optiques/IR/encodeurs)</span>
+            </div>
+
+            <h3>Tests & Validation</h3>
+            <div class="taglist">
+              <span class="tag">Tests unitaires</span><span class="tag">Non-régression</span>
+              <span class="tag">Injection de fautes</span><span class="tag">Analyse de couverture</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2>Langues</h2>
+          <div class="card">
+            <div class="meta"><b>Français</b> : langue maternelle</div>
+            <div class="meta"><b>Anglais</b> : niveau professionnel</div>
+            <div class="meta"><b>Italien</b> : notions</div>
+          </div>
+        </div>
+
         <div>
           <h2>Références</h2>
           <div class="card">
             <strong>Florian Letombe</strong>
             <div class="meta">Ingénieur Software — STMicroelectronics</div>
             <div class="meta">Email : <a href="mailto:florian.letombe@st.fr">florian.letombe@st.fr</a></div>
-            <div class="meta">Contexte : responsable / encadrant (stage — outil interne, tests, GUI Python)</div>
+            <div class="meta">Contexte : encadrement stage (qualification d’outil, tests, GUI Python)</div>
           </div>
         </div>
       </section>
@@ -135,3 +229,4 @@
   </script>
 </body>
 </html>
+
